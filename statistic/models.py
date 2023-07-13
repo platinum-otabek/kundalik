@@ -1,5 +1,5 @@
 from django.db import models
-from account.models import StudentModel,TeacherModel
+
 from datetime import datetime
 from django.core.validators import MinValueValidator, MaxValueValidator
 # Create your models here.
@@ -13,21 +13,23 @@ class SubjectModel(models.Model):
         db_table = 'subject'
 
 class AttendanceModel(models.Model):
+    from account.models import StudentModel,TeacherModel
     student = models.ForeignKey(StudentModel,on_delete=models.CASCADE)
-    subject= models.ForeignKey(SubjectModel,on_delete=models.SET_NULL)
-    teacher = models.ForeignKey(TeacherModel,on_delete=models.SET_NULL)
+    subject= models.ForeignKey(SubjectModel,on_delete=models.SET_NULL,null=True)
+    teacher = models.ForeignKey(TeacherModel,on_delete=models.SET_NULL,null=True)
 
     created_at = models.DateTimeField(default=datetime.now)
 
     def __str__(self) -> str:
         return self.student.name
     class Meta:
-        db_table = 'attendance'
+        db_table = 'statistic_attendance'
 
 class GradeModel(models.Model):
+    from account.models import StudentModel,TeacherModel
     student = models.ForeignKey(StudentModel,on_delete=models.CASCADE)
-    subject= models.ForeignKey(SubjectModel,on_delete=models.SET_NULL)
-    teacher = models.ForeignKey(TeacherModel,on_delete=models.SET_NULL)
+    subject= models.ForeignKey(SubjectModel,on_delete=models.SET_NULL,null=True)
+    teacher = models.ForeignKey(TeacherModel,on_delete=models.SET_NULL,null=True)
     mark = models.PositiveSmallIntegerField(default=0,
                                             validators=[MinValueValidator(0),
                                                         MaxValueValidator(5)
@@ -38,4 +40,4 @@ class GradeModel(models.Model):
         return self.student.name
     
     class Meta:
-        db_table = 'attendance'
+        db_table = 'statistic_grade'
