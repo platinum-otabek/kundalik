@@ -36,9 +36,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     #local
     'account',
-    'statistic',
-    
-    
+    'statistic',   
     'school',
     #third
     'rest_framework',
@@ -51,6 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+AUTH_USER_MODEL = 'account.CustomUser'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
