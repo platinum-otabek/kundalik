@@ -31,7 +31,7 @@ class StudentModel(PersonModel):
     # username = models.CharField(default='',max_length=25)
     # password = models.CharField(default='',max_length=65)
     phone = models.CharField(default='',max_length=65)
-
+    image = models.ImageField(upload_to='upload/student',default='')
 
     class Meta:
         db_table = 'student'
