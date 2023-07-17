@@ -28,6 +28,8 @@ urlpatterns = [
     path('v1/api/account/',include('account.urls')),
     path('v1/api/statistic/',include('statistic.urls')),
     path('v1/api/statistic/',include('new1.urls')),
+    path('v1/api/statistic/',include('new2.urls')),
+    path('v1/api/statistic/',include('new3.urls')),
   
 ]
 
