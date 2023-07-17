@@ -15,10 +15,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
+
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('v1/api/account/',include('account.urls'))
+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('v1/api/account/',include('account.urls')),
+    path('v1/api/statistic/',include('statistic.urls'))
 ]
 
 # create user kundalik_user with encrypted password '#Pg8Lg-$';
