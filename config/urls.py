@@ -26,7 +26,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('v1/api/account/',include('account.urls')),
-    path('v1/api/statistic/',include('statistic.urls'))
+    path('v1/api/statistic/',include('statistic.urls')),
+    path('v1/api/statistic/',include('new1.urls')),
 ]
 
 # create user kundalik_user with encrypted password '#Pg8Lg-$';
